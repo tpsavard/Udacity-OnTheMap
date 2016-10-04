@@ -21,10 +21,8 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Fix up the UI
+        enableLogin()
     }
-    
-    
-    // MARK:- Delegate Methods
     
     
     // MARK:- UI Methods
@@ -33,11 +31,17 @@ class LoginViewController: UIViewController {
         print("login IBAction called")
     }
     
+    @IBAction func textFieldUpdated(_ sender: AnyObject) {
+        print("textFieldUpdated called")
+        
+        enableLogin()
+    }
+    
     
     // MARK:- Other Methods
     
     func enableLogin() {
-        loginButton.isEnabled = (usernameField.text!.isEmpty || passwordField.text!.isEmpty)
+        loginButton.isEnabled = !(usernameField.text!.isEmpty || passwordField.text!.isEmpty)
     }
 
 }
