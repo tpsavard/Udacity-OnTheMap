@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                 <connections>
                                     <action selector="textFieldUpdated:" destination="BYZ-38-t0r" eventType="editingChanged" id="mYp-ap-GyR"/>
                                 </connections>
@@ -31,7 +31,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tz2-yP-qhJ">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="textFieldUpdated:" destination="BYZ-38-t0r" eventType="editingChanged" id="dun-cu-LDb"/>
                                 </connections>
@@ -41,7 +41,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="V1F-fq-jJY"/>
                                 </constraints>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="loginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xnD-Fa-2eg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,11 +64,30 @@
                         <outlet property="loginButton" destination="a7h-QN-d71" id="efR-Iu-xg7"/>
                         <outlet property="passwordField" destination="tz2-yP-qhJ" id="wqa-S3-bEg"/>
                         <outlet property="usernameField" destination="XUD-5B-QSr" id="vhp-JC-z7I"/>
+                        <segue destination="rac-1n-Qis" kind="show" identifier="LoggedIn" action="showDetailViewController:sender:" id="Igq-Da-Fiv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+            <point key="canvasLocation" x="172" y="123"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tXi-4p-aZx">
+            <objects>
+                <viewController id="rac-1n-Qis" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hjB-hL-qeM"/>
+                        <viewControllerLayoutGuide type="bottom" id="3cw-Jy-weo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2ge-VM-qS5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gB6-LW-epN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="123"/>
         </scene>
     </scenes>
 </document>
