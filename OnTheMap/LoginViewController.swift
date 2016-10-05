@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    let networkRequests: NetworkRequests = NetworkRequests()
     
     // MARK:- View Controller Methods
     
@@ -50,8 +51,8 @@ class LoginViewController: UIViewController {
         
         NSLog("Attemping login with \(username)")
         
-        // Doing a log in...
-        let loginResult = NetworkRequests.LoginResults.failedForNetworkingError
+        // Make the call
+        let loginResult = networkRequests.login(username: username, password: password)
         
         // Handle the login outcome
         switch loginResult {
@@ -68,6 +69,7 @@ class LoginViewController: UIViewController {
     }
     
     func showLoginFailureAlert(message: String) {
+        // Construct the alert ingredients
         let alertController: UIAlertController = UIAlertController(
             title: NSLocalizedString("LoginFailureTitle", comment: "Login failed alert title"),
             message: message,
@@ -77,6 +79,7 @@ class LoginViewController: UIViewController {
             style: UIAlertActionStyle.default,
             handler: nil)
         
+        // Showtime!
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
 
