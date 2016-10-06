@@ -19,8 +19,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XUD-5B-QSr">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Udacity Logo" translatesAutoresizingMaskIntoConstraints="NO" id="5IL-A0-9w2">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="A9P-1x-iYP"/>
+                                    <constraint firstAttribute="height" constant="128" id="SGi-Q5-FJM"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XUD-5B-QSr">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -28,7 +33,26 @@
                                     <action selector="textFieldUpdated:" destination="BYZ-38-t0r" eventType="editingChanged" id="mYp-ap-GyR"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tz2-yP-qhJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7h-QN-d71">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="V1F-fq-jJY"/>
+                                </constraints>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xnD-Fa-2eg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-vT-Q2R">
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tz2-yP-qhJ">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -37,26 +61,20 @@
                                     <action selector="textFieldUpdated:" destination="BYZ-38-t0r" eventType="editingChanged" id="dun-cu-LDb"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7h-QN-d71">
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="V1F-fq-jJY"/>
-                                </constraints>
-                                <state key="normal" title="Log In"/>
-                                <connections>
-                                    <action selector="loginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xnD-Fa-2eg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="tz2-yP-qhJ" firstAttribute="top" secondItem="XUD-5B-QSr" secondAttribute="bottom" constant="20" id="F8R-Xg-Msd"/>
+                            <constraint firstItem="a7h-QN-d71" firstAttribute="top" secondItem="tz2-yP-qhJ" secondAttribute="bottom" constant="15" id="8Yx-hW-xV6"/>
+                            <constraint firstItem="5IL-A0-9w2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gxy-CP-ytG"/>
+                            <constraint firstItem="JzT-vT-Q2R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jqg-3k-7Ct"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XUD-5B-QSr" secondAttribute="trailing" id="Mc1-89-PGu"/>
                             <constraint firstItem="tz2-yP-qhJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NBW-33-7Gg"/>
-                            <constraint firstItem="a7h-QN-d71" firstAttribute="top" secondItem="tz2-yP-qhJ" secondAttribute="bottom" constant="20" id="Q9A-9l-BoS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tz2-yP-qhJ" secondAttribute="trailing" id="TdF-XK-Z9Q"/>
+                            <constraint firstItem="tz2-yP-qhJ" firstAttribute="top" secondItem="XUD-5B-QSr" secondAttribute="bottom" constant="15" id="UoY-3v-GKB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JzT-vT-Q2R" secondAttribute="bottom" constant="15" id="V1O-IC-XwR"/>
+                            <constraint firstItem="XUD-5B-QSr" firstAttribute="top" secondItem="5IL-A0-9w2" secondAttribute="bottom" constant="15" id="Ygk-2z-zsr"/>
                             <constraint firstItem="XUD-5B-QSr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="igi-Uf-9v3"/>
-                            <constraint firstItem="XUD-5B-QSr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="165" id="piC-Zn-aLh"/>
+                            <constraint firstItem="5IL-A0-9w2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="oeW-fb-MYi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="a7h-QN-d71" secondAttribute="trailing" id="wld-uj-2a1"/>
                             <constraint firstItem="a7h-QN-d71" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zPA-pF-BVF"/>
                         </constraints>
@@ -70,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="123"/>
+            <point key="canvasLocation" x="172" y="122.78860569715144"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXi-4p-aZx">
@@ -91,4 +109,7 @@
             <point key="canvasLocation" x="993" y="123"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Udacity Logo" width="256" height="256"/>
+    </resources>
 </document>
