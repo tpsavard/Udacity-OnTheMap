@@ -36,8 +36,28 @@ class LoginViewController: UIViewController {
         enableLogin()
     }
     
+    @IBAction func textFieldDone(sender: UITextField) {
+        print("textFieldDone called")
+        
+        // Check which text field sent this: login (1) or password (2)
+        switch sender.tag {
+        case 1:
+            passwordField.becomeFirstResponder()
+        case 2:
+            sender.resignFirstResponder()
+            logIn()
+        default:
+            break
+        }
+    }
+    
+    
     @IBAction func logIn(sender: UIButton) {
         print("LogIn IBAction called")
+        
+        // Shorthand to drop keyboard if either text field is actively being editted
+        sender.becomeFirstResponder()
+        
         logIn()
     }
     
@@ -57,6 +77,9 @@ class LoginViewController: UIViewController {
         let username: String = usernameField.text!
         let password: String = passwordField.text!
         
+        // Setup the UI
+        setNetworkActivityStatus(active: true)
+        
         // Make the call
         networkRequests.logIn(username: username, password: password) { (logInResult) in
             // Handle the login outcome
@@ -71,6 +94,9 @@ class LoginViewController: UIViewController {
                 NSLog("Log in failed for networking error")
                 self.showLogInFailureAlert(message: NSLocalizedString("LoginNetworkFailure", comment: "Network failure text"))
             }
+            
+            // Clean up the UI
+            self.setNetworkActivityStatus(active: false)
         }
     }
     
@@ -96,6 +122,11 @@ class LoginViewController: UIViewController {
         if let signUpURL = URL(string: "https://www.udacity.com/account/auth#!/signup") {
             UIApplication.shared.open(signUpURL, options: [:], completionHandler: nil)
         }
+    }
+    
+    func setNetworkActivityStatus(active: Bool) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = active
+        view.isUserInteractionEnabled = !active
     }
 
 }
