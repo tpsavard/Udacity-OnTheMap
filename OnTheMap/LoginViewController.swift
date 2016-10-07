@@ -16,7 +16,11 @@ class LoginViewController: UIViewController {
     
     let networkRequests: NetworkRequests = NetworkRequests()
     
-    // MARK:- View Controller Methods
+    // MARK:- View Controller Properties & Methods
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,17 +29,21 @@ class LoginViewController: UIViewController {
         enableLogin()
     }
     
-    
     // MARK:- UI Methods
     
-    @IBAction func login(sender: UIButton) {
-        print("login IBAction called")
-        login()
-    }
-    
-    @IBAction func textFieldUpdated(_ sender: AnyObject) {
+    @IBAction func textFieldUpdated(sender: AnyObject) {
         print("textFieldUpdated called")
         enableLogin()
+    }
+    
+    @IBAction func logIn(sender: UIButton) {
+        print("LogIn IBAction called")
+        logIn()
+    }
+    
+    @IBAction func signUp(sender: UIButton) {
+        print("SignUp IBAction called")
+        signUp()
     }
     
     
@@ -45,30 +53,28 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = !(usernameField.text!.isEmpty || passwordField.text!.isEmpty)
     }
     
-    func login() {
+    func logIn() {
         let username: String = usernameField.text!
         let password: String = passwordField.text!
         
-        NSLog("Attemping login with \(username)")
-        
         // Make the call
-        let loginResult = networkRequests.login(username: username, password: password)
-        
-        // Handle the login outcome
-        switch loginResult {
-        case NetworkRequests.LoginResults.success:
-            NSLog("Login succeeded")
-            performSegue(withIdentifier: "LoggedIn", sender: nil)
-        case NetworkRequests.LoginResults.failedForCredentials:
-            NSLog("Login failed for invalid credentials")
-            showLoginFailureAlert(message: NSLocalizedString("LoginCredentialFailure", comment: "Credentials failure text"))
-        case NetworkRequests.LoginResults.failedForNetworkingError:
-            NSLog("Login failed for networking error")
-            showLoginFailureAlert(message: NSLocalizedString("LoginNetworkFailure", comment: "Network failure text"))
+        networkRequests.logIn(username: username, password: password) { (logInResult) in
+            // Handle the login outcome
+            let castResult = logInResult as! NetworkRequests.LogInResults
+            switch castResult {
+            case NetworkRequests.LogInResults.success:
+                NSLog("Log in succeeded")
+                self.performSegue(withIdentifier: "LoggedIn", sender: nil)
+            case NetworkRequests.LogInResults.failedForCredentials:
+                self.showLogInFailureAlert(message: NSLocalizedString("LoginCredentialFailure", comment: "Credentials failure text"))
+            case NetworkRequests.LogInResults.failedForNetworkingError:
+                NSLog("Log in failed for networking error")
+                self.showLogInFailureAlert(message: NSLocalizedString("LoginNetworkFailure", comment: "Network failure text"))
+            }
         }
     }
     
-    func showLoginFailureAlert(message: String) {
+    func showLogInFailureAlert(message: String) {
         // Construct the alert ingredients
         let alertController: UIAlertController = UIAlertController(
             title: NSLocalizedString("LoginFailureTitle", comment: "Login failed alert title"),
@@ -83,6 +89,13 @@ class LoginViewController: UIViewController {
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
 
+    }
+    
+    func signUp() {
+        // Jump to Safari and open the sign up link
+        if let signUpURL = URL(string: "https://www.udacity.com/account/auth#!/signup") {
+            UIApplication.shared.open(signUpURL, options: [:], completionHandler: nil)
+        }
     }
 
 }

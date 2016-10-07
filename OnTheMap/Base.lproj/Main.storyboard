@@ -30,7 +30,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                 <connections>
-                                    <action selector="textFieldUpdated:" destination="BYZ-38-t0r" eventType="editingChanged" id="mYp-ap-GyR"/>
+                                    <action selector="textFieldUpdatedWithSender:" destination="BYZ-38-t0r" eventType="editingChanged" id="v60-aW-VSz"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7h-QN-d71">
@@ -44,13 +44,16 @@
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xnD-Fa-2eg"/>
+                                    <action selector="logInSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UNl-Lu-fHJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-vT-Q2R">
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signUpWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aRz-Lh-4ef"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tz2-yP-qhJ">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,17 +61,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
-                                    <action selector="textFieldUpdated:" destination="BYZ-38-t0r" eventType="editingChanged" id="dun-cu-LDb"/>
+                                    <action selector="textFieldUpdatedWithSender:" destination="BYZ-38-t0r" eventType="editingChanged" id="M3x-58-8IF"/>
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93475157567087164" green="0.52085766236190378" blue="0.0019336762225239121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="a7h-QN-d71" firstAttribute="top" secondItem="tz2-yP-qhJ" secondAttribute="bottom" constant="15" id="8Yx-hW-xV6"/>
                             <constraint firstItem="5IL-A0-9w2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gxy-CP-ytG"/>
                             <constraint firstItem="JzT-vT-Q2R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jqg-3k-7Ct"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XUD-5B-QSr" secondAttribute="trailing" id="Mc1-89-PGu"/>
                             <constraint firstItem="tz2-yP-qhJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NBW-33-7Gg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JzT-vT-Q2R" secondAttribute="trailing" id="Q7k-Cn-Un5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tz2-yP-qhJ" secondAttribute="trailing" id="TdF-XK-Z9Q"/>
                             <constraint firstItem="tz2-yP-qhJ" firstAttribute="top" secondItem="XUD-5B-QSr" secondAttribute="bottom" constant="15" id="UoY-3v-GKB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JzT-vT-Q2R" secondAttribute="bottom" constant="15" id="V1O-IC-XwR"/>
@@ -77,6 +81,7 @@
                             <constraint firstItem="5IL-A0-9w2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="oeW-fb-MYi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="a7h-QN-d71" secondAttribute="trailing" id="wld-uj-2a1"/>
                             <constraint firstItem="a7h-QN-d71" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zPA-pF-BVF"/>
+                            <constraint firstItem="JzT-vT-Q2R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zWk-Bk-PSf"/>
                         </constraints>
                     </view>
                     <connections>
