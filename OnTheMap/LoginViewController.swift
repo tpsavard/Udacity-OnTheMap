@@ -10,11 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
     let networkRequests: NetworkRequests = NetworkRequests()
+    
     
     // MARK:- View Controller Properties & Methods
     
@@ -28,6 +30,7 @@ class LoginViewController: UIViewController {
         // Fix up the UI
         enableLogin()
     }
+    
     
     // MARK:- UI Methods
     
@@ -50,7 +53,6 @@ class LoginViewController: UIViewController {
             break
         }
     }
-    
     
     @IBAction func logIn(sender: UIButton) {
         print("LogIn IBAction called")
@@ -127,6 +129,7 @@ class LoginViewController: UIViewController {
     func setNetworkActivityStatus(active: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = active
         view.isUserInteractionEnabled = !active
+        
     }
 
 }
