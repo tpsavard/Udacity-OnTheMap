@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    let networkRequests: NetworkRequests = NetworkRequests()
+    let networkRequests: NetworkRequests = Session.networkRequests
     
     
     // MARK:- View Controller Properties & Methods

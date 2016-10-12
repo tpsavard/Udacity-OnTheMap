@@ -8,13 +8,14 @@
 
 import Foundation
 
-class SessionData {
+class Session {
     
     class Data {
         var studentInformation: [StudentInformation] = []
     }
     
-    // Globally accessible, consistent model instance
+    // Globally accessible, consistent model instances
     static let data: Data = Data()
+    static let networkRequests: NetworkRequests = NetworkRequests()
     
 }
