@@ -22,6 +22,7 @@ struct StudentInformation {
     
     var url: URL?
     
+    
     init(data: Dictionary<String, Any?>) {
         // The input should be a Udacity StudentLocation (multiple) GET API response; not all response (or structure) fields are saved, only those necessary for listing.
         if let firstName = data["firstName"] as? String {

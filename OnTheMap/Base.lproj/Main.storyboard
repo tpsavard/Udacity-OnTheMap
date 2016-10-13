@@ -114,24 +114,35 @@
             </objects>
             <point key="canvasLocation" x="1030" y="123"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="PX0-SK-idY">
+        <!--List-->
+        <scene sceneID="niz-ZM-rbg">
             <objects>
-                <viewController id="9go-nO-she" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Cx9-Dz-CbT"/>
-                        <viewControllerLayoutGuide type="bottom" id="oe4-Sw-b1c"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YLn-AK-DQb">
+                <tableViewController id="ZFz-ZI-z51" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pad-OK-1nY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="3P3-LS-xq0"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hfk-53-1px" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="d2d-QO-6UY">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d2d-QO-6UY" id="Cr0-bu-Pdq">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ZFz-ZI-z51" id="y9f-T6-aof"/>
+                            <outlet property="delegate" destination="ZFz-ZI-z51" id="lht-gH-Vey"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="List" id="wTc-it-rwa"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOK-Yu-ara" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="497"/>
+            <point key="canvasLocation" x="2769" y="494"/>
         </scene>
         <!--Map-->
         <scene sceneID="2yd-ah-A8a">
@@ -155,11 +166,19 @@
         <!--On The Map-->
         <scene sceneID="bIn-VW-n1k">
             <objects>
-                <tabBarController id="A8k-xg-RfU" sceneMemberID="viewController">
+                <tabBarController id="A8k-xg-RfU" customClass="HubViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="FN1-xP-Jwo">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="rtD-LQ-9xZ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="rtD-LQ-9xZ">
+                            <connections>
+                                <action selector="logoutWithSender:" destination="A8k-xg-RfU" id="PUV-II-1VW"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="nwG-9z-h4F"/>
+                            <barButtonItem systemItem="refresh" id="nwG-9z-h4F">
+                                <connections>
+                                    <action selector="refreshWithSender:" destination="A8k-xg-RfU" id="0xB-8O-ZEu"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Pin" id="SG5-FE-4RU"/>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -170,7 +189,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="zGN-B9-M98" kind="relationship" relationship="viewControllers" id="hQE-cN-0dw"/>
-                        <segue destination="9go-nO-she" kind="relationship" relationship="viewControllers" id="Aao-2T-fAs"/>
+                        <segue destination="ZFz-ZI-z51" kind="relationship" relationship="viewControllers" id="sFg-cY-Qes"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="377-4e-mVp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,7 +9,6 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -35,7 +34,6 @@ class LoginViewController: UIViewController {
     // MARK:- UI Methods
     
     @IBAction func textFieldUpdated(sender: AnyObject) {
-        print("textFieldUpdated called")
         enableLogin()
     }
     
@@ -57,7 +55,7 @@ class LoginViewController: UIViewController {
     @IBAction func logIn(sender: UIButton) {
         print("LogIn IBAction called")
         
-        // Shorthand to drop keyboard if either text field is actively being editted
+        // Shorthand to cancel keyboard if either text field is actively being editted
         sender.becomeFirstResponder()
         
         logIn()
@@ -85,14 +83,14 @@ class LoginViewController: UIViewController {
         // Make the call
         networkRequests.logIn(username: username, password: password) { (logInResult) in
             // Handle the login outcome
-            let castResult = logInResult as! NetworkRequests.LogInResults
+            let castResult: NetworkRequests.Results = logInResult as! NetworkRequests.Results
             switch castResult {
-            case NetworkRequests.LogInResults.success:
+            case NetworkRequests.Results.success:
                 NSLog("Log in succeeded")
                 self.performSegue(withIdentifier: "LoggedIn", sender: nil)
-            case NetworkRequests.LogInResults.failedForCredentials:
+            case NetworkRequests.Results.failedForCredentials:
                 self.showLogInFailureAlert(message: NSLocalizedString("LoginCredentialFailure", comment: "Credentials failure text"))
-            case NetworkRequests.LogInResults.failedForNetworkingError:
+            case NetworkRequests.Results.failedForNetworkingError:
                 NSLog("Log in failed for networking error")
                 self.showLogInFailureAlert(message: NSLocalizedString("LoginNetworkFailure", comment: "Network failure text"))
             }

@@ -10,11 +10,14 @@ import Foundation
 
 class NetworkRequests {
     
-    enum LogInResults {
+    enum Results {
         case success
-        case failedForCredentials
         case failedForNetworkingError
+        case failedForCredentials
     }
+    
+    
+    // MARK:- Action Methods
     
     func logIn(username: String, password: String, completionHandler: @escaping (Any) -> ()) {
         // Setup request
@@ -32,35 +35,46 @@ class NetworkRequests {
             if (error != nil) {
                 NSLog("Log in failed for networking error: \(error)")
                 DispatchQueue.main.async() {
-                    completionHandler(LogInResults.failedForNetworkingError)
+                    completionHandler(Results.failedForNetworkingError)
                 }
             }
         
-            // Assuming communication was successful, check the result
-            let subData = data?.subdata(in: 5..<data!.count)
-            do {
-                let response: Dictionary = try JSONSerialization.jsonObject(with: subData!) as! Dictionary<String, Any>
-                
-                if let status: Int = response["status"] as? Int, status == 403 {
-                    NSLog("Log in failed for invalid credentials")
-                    DispatchQueue.main.async() {
-                        completionHandler(LogInResults.failedForCredentials)
-                    }
-                } else {
-                    NSLog("Log in successful")
-                    DispatchQueue.main.async() {
-                        completionHandler(LogInResults.success)
-                    }
-                }
-            } catch {
-                // Assume that the data was currupted as received
+            // Try to parse whatever we received; if we fail, assume that the data was currupted as received
+            let subData: Data? = data?.subdata(in: 5..<data!.count)
+            guard let response = self.fromJSONToDict(data: subData) else {
                 NSLog("Error serializing log in response: \(error)")
                 DispatchQueue.main.async() {
-                    completionHandler(LogInResults.failedForNetworkingError)
+                    completionHandler(Results.failedForNetworkingError)
+                }
+                return
+            }
+            
+            // Check the intelligble structure
+            if let status: Int = response["status"] as? Int, status == 403 {
+                NSLog("Log in failed for invalid credentials")
+                DispatchQueue.main.async() {
+                    completionHandler(Results.failedForCredentials)
+                }
+            } else {
+                NSLog("Log in successful")
+                DispatchQueue.main.async() {
+                    completionHandler(Results.success)
                 }
             }
         }
         task.resume()
+    }
+    
+    
+    // MARK:- Other Methods
+    
+    func fromJSONToDict(data: Data?) -> Dictionary<String, Any?>? {
+        do {
+            let dict: Dictionary<String, Any> = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, Any>
+            return dict
+        } catch {
+            return nil
+        }
     }
     
 }

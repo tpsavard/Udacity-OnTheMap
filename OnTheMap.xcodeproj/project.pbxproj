@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0172BF251DA0272600411DB3 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172BF241DA0272600411DB3 /* NetworkRequests.swift */; };
+		01EA09F71DB01519002CC2FF /* HubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EA09F61DB01519002CC2FF /* HubViewController.swift */; };
 		221ED2B11DA4ABBC009BA0CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 221ED2B31DA4ABBC009BA0CC /* Localizable.strings */; };
 		2251B13D1DAC8FEA009B9C9F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251B13C1DAC8FEA009B9C9F /* Session.swift */; };
 		2251B13F1DAC9094009B9C9F /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251B13E1DAC9094009B9C9F /* StudentInformation.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		0172BF241DA0272600411DB3 /* NetworkRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
+		01EA09F61DB01519002CC2FF /* HubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HubViewController.swift; sourceTree = "<group>"; };
 		221ED2B61DA4B181009BA0CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2251B13C1DAC8FEA009B9C9F /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		2251B13E1DAC9094009B9C9F /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
@@ -82,6 +84,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01EA09F31DB0141D002CC2FF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				227A105F1D94DBB900558348 /* LoginViewController.swift */,
+				01EA09F61DB01519002CC2FF /* HubViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		01EA09F41DB0143F002CC2FF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0172BF241DA0272600411DB3 /* NetworkRequests.swift */,
+				2251B13C1DAC8FEA009B9C9F /* Session.swift */,
+				2251B13E1DAC9094009B9C9F /* StudentInformation.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		01EA09F51DB01446002CC2FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				227A10611D94DBBA00558348 /* Main.storyboard */,
+				227A10661D94DBBA00558348 /* LaunchScreen.storyboard */,
+				221ED2B31DA4ABBC009BA0CC /* Localizable.strings */,
+				227A10641D94DBBA00558348 /* Assets.xcassets */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		227A10511D94DBB900558348 = {
 			isa = PBXGroup;
 			children = (
@@ -105,15 +137,10 @@
 		227A105C1D94DBB900558348 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				01EA09F31DB0141D002CC2FF /* Controllers */,
+				01EA09F41DB0143F002CC2FF /* Models */,
+				01EA09F51DB01446002CC2FF /* Views */,
 				227A105D1D94DBB900558348 /* AppDelegate.swift */,
-				227A105F1D94DBB900558348 /* LoginViewController.swift */,
-				0172BF241DA0272600411DB3 /* NetworkRequests.swift */,
-				2251B13C1DAC8FEA009B9C9F /* Session.swift */,
-				2251B13E1DAC9094009B9C9F /* StudentInformation.swift */,
-				227A10611D94DBBA00558348 /* Main.storyboard */,
-				221ED2B31DA4ABBC009BA0CC /* Localizable.strings */,
-				227A10641D94DBBA00558348 /* Assets.xcassets */,
-				227A10661D94DBBA00558348 /* LaunchScreen.storyboard */,
 				227A10691D94DBBA00558348 /* Info.plist */,
 			);
 			path = OnTheMap;
@@ -276,6 +303,7 @@
 				227A105E1D94DBB900558348 /* AppDelegate.swift in Sources */,
 				2251B13D1DAC8FEA009B9C9F /* Session.swift in Sources */,
 				2251B13F1DAC9094009B9C9F /* StudentInformation.swift in Sources */,
+				01EA09F71DB01519002CC2FF /* HubViewController.swift in Sources */,
 				0172BF251DA0272600411DB3 /* NetworkRequests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
