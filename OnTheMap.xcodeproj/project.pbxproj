@@ -96,9 +96,9 @@
 		01EA09F41DB0143F002CC2FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0172BF241DA0272600411DB3 /* NetworkRequests.swift */,
 				2251B13C1DAC8FEA009B9C9F /* Session.swift */,
 				2251B13E1DAC9094009B9C9F /* StudentInformation.swift */,
+				0172BF241DA0272600411DB3 /* NetworkRequests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
