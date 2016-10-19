@@ -168,9 +168,9 @@
             <objects>
                 <tabBarController id="A8k-xg-RfU" customClass="HubViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="FN1-xP-Jwo">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="rtD-LQ-9xZ">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="rtD-LQ-9xZ">
                             <connections>
-                                <action selector="logoutWithSender:" destination="A8k-xg-RfU" id="PUV-II-1VW"/>
+                                <action selector="logOutWithSender:" destination="A8k-xg-RfU" id="d7N-GI-VoS"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>

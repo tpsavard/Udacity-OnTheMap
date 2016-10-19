@@ -83,8 +83,7 @@ class LoginViewController: UIViewController {
         // Make the call
         networkRequests.logIn(username: username, password: password) { (logInResult) in
             // Handle the login outcome
-            let castResult: NetworkRequests.Results = logInResult as! NetworkRequests.Results
-            switch castResult {
+            switch logInResult {
             case NetworkRequests.Results.success:
                 NSLog("Log in succeeded")
                 self.performSegue(withIdentifier: "LoggedIn", sender: nil)

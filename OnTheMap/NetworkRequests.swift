@@ -19,7 +19,7 @@ class NetworkRequests {
     
     // MARK:- Action Methods
     
-    func logIn(username: String, password: String, completionHandler: @escaping (Any) -> ()) {
+    func logIn(username: String, password: String, completionHandler: @escaping (Results) -> ()) {
         // Setup request
         var request = URLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
         request.httpMethod = "POST"
@@ -63,6 +63,14 @@ class NetworkRequests {
             }
         }
         task.resume()
+    }
+    
+    func logOut(completionHandler: @escaping (Results) -> ()) {
+        
+    }
+    
+    func refreshStudentInformation(completionHandler: @escaping (Results) -> ()) {
+        
     }
     
     

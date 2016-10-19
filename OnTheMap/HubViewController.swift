@@ -10,13 +10,30 @@ import UIKit
 
 class HubViewController: UITabBarController {
 
+    let networkRequests: NetworkRequests = Session.networkRequests
+    
 
     // MARK:- UI Methods
     
-    @IBAction func logout(sender: UIBarButtonItem) {
+    @IBAction func logOut(sender: UIBarButtonItem) {
+        print("logOut IBAction called")
+        logOut()
     }
     
     @IBAction func refresh(sender: UIBarButtonItem) {
+        print("refresh IBAction called")
+        refresh()
+    }
+    
+    
+    // MARK:- Other Methods
+    
+    func logOut() {
+        
+    }
+    
+    func refresh() {
+        
     }
     
 }
