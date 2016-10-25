@@ -8,8 +8,11 @@
 
 // Generic String
 "OK" = "OK";
+"NetworkFailure" = "There was a problem communicating with Udacity.\n\nPlease wait a moment and try again.";
 
 // Login Strings
 "LoginFailureTitle" = "Login Failed";
 "LoginCredentialFailure" = "Your combination of username and password was not recognized.\n\nDouble check what you've entered and try again.";
-"LoginNetworkFailure" = "There was a problem communicating with Udacity.\n\nPlease wait a moment and try again.";
+
+// Logout Strings
+"LogoutFailureTitle" = "Logout Failed";

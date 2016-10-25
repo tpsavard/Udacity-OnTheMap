@@ -93,6 +93,7 @@ class NetworkRequests {
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForNetworkingError)
                 }
+                return
             }
             
             // Assumming at this point that the logout was sucessful; if it wasn't for whatever (unlikely) reason, the user will simply create a new session on the next login and the current one will expire on it's own
@@ -112,8 +113,12 @@ class NetworkRequests {
     // MARK:- Other Methods
     
     func fromJSONToDict(data: Data?) -> Dictionary<String, Any?>? {
+        guard let data = data else {
+            return nil
+        }
+        
         do {
-            let dict: Dictionary<String, Any> = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, Any>
+            let dict: Dictionary<String, Any> = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
             return dict
         } catch {
             return nil

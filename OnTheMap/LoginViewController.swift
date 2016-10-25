@@ -87,11 +87,12 @@ class LoginViewController: UIViewController {
             case NetworkRequests.Results.success:
                 NSLog("Log in succeeded")
                 self.performSegue(withIdentifier: "LoggedIn", sender: nil)
+                self.passwordField.text = ""
             case NetworkRequests.Results.failedForCredentials:
                 self.showLogInFailureAlert(message: NSLocalizedString("LoginCredentialFailure", comment: "Credentials failure text"))
             case NetworkRequests.Results.failedForNetworkingError:
                 NSLog("Log in failed for networking error")
-                self.showLogInFailureAlert(message: NSLocalizedString("LoginNetworkFailure", comment: "Network failure text"))
+                self.showLogInFailureAlert(message: NSLocalizedString("NetworkFailure", comment: "Network failure text"))
             }
             
             // Clean up the UI
@@ -113,7 +114,6 @@ class LoginViewController: UIViewController {
         // Showtime!
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
-
     }
     
     func signUp() {
@@ -126,7 +126,6 @@ class LoginViewController: UIViewController {
     func setNetworkActivityStatus(active: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = active
         view.isUserInteractionEnabled = !active
-        
     }
 
 }

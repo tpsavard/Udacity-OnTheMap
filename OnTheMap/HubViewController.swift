@@ -29,11 +29,52 @@ class HubViewController: UITabBarController {
     // MARK:- Other Methods
     
     func logOut() {
+        // Setup the UI
+        setNetworkActivityStatus(active: true)
         
+        // Make the call
+        networkRequests.logOut() { (logOutResult) in
+            // Handle the login outcome
+            switch logOutResult {
+            case NetworkRequests.Results.success:
+                NSLog("Log out succeeded")
+                self.dismiss(animated: true, completion: nil)
+            case NetworkRequests.Results.failedForNetworkingError:
+                NSLog("Log out failed for networking error")
+                self.showFailureAlert(
+                    title: NSLocalizedString("LogoutFailureTitle", comment: "Logout failure alert title"),
+                    message: NSLocalizedString("NetworkFailure", comment: "Network failure text"))
+            default:
+                break
+            }
+            
+            // Clean up the UI
+            self.setNetworkActivityStatus(active: false)
+        }
     }
     
     func refresh() {
         
+    }
+    
+    func showFailureAlert(title: String, message: String) {
+        // Construct the alert ingredients
+        let alertController: UIAlertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle:UIAlertControllerStyle.alert)
+        let alertAction: UIAlertAction = UIAlertAction(
+            title: NSLocalizedString("OK", comment: "Not good-OK, not bad-OK, just OK-OK"),
+            style: UIAlertActionStyle.default,
+            handler: nil)
+        
+        // Showtime!
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func setNetworkActivityStatus(active: Bool) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = active
     }
     
 }
