@@ -28,7 +28,7 @@ class NetworkRequests {
         request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
         
         // Send the request to Udacity
-        NSLog("Attemping logi n with \(username)")
+        NSLog("Attemping log in with \(username)")
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             // Catch any communication errors
@@ -42,7 +42,7 @@ class NetworkRequests {
             // Try to parse whatever we received; if we fail, assume that the data was currupted as received
             let subData: Data? = data?.subdata(in: 5..<data!.count)
             guard let response = self.fromJSONToDict(data: subData) else {
-                NSLog("Error serializing log in response: \(error)")
+                NSLog("Error serializing log in response")
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForNetworkingError)
                 }
@@ -106,7 +106,62 @@ class NetworkRequests {
     }
     
     func refreshStudentInformation(completionHandler: @escaping (Results) -> ()) {
+        // Setup the request; assume for now that we will only ever want the last 100 students, from most to least recent
+        var url: String = "https://parse.udacity.com/parse/classes/StudentLocation?"
+        url.append("limit=100&")
+        url.append("order=-updatedAt")
         
+        var request = URLRequest(url: URL(string: url)!)
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        
+        // Send the request to Udacity
+        NSLog("Refreshing last 100 student posts")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            // Catch any communication errors
+            if (error != nil) {
+                NSLog("Refresh failed for networking error: \(error)")
+                DispatchQueue.main.async() {
+                    completionHandler(Results.failedForNetworkingError)
+                }
+                return
+            }
+            
+            // Try to parse whatever we received; if we fail, assume that the data was currupted as received
+            let subData: Data? = data?.subdata(in: 5..<data!.count)
+            guard let response = self.fromJSONToDict(data: subData) else {
+                NSLog("Error serializing refresh response")
+                DispatchQueue.main.async() {
+                    completionHandler(Results.failedForNetworkingError)
+                }
+                return
+            }
+            
+            guard let results = response["results"] as? [Dictionary<String, Any?>] else {
+                NSLog("No results in the response")
+                DispatchQueue.main.async() {
+                    completionHandler(Results.failedForNetworkingError)
+                }
+                return
+            }
+            
+            // Check for actual post fields; save those that we get
+            var newStudentInfo: [StudentInformation] = []
+            for result: Dictionary<String, Any?> in results {
+                let newStudentInfoEntry: StudentInformation = StudentInformation(data: result)
+                newStudentInfo.append(newStudentInfoEntry)
+            }
+            
+            Session.data.studentInformation.removeAll()
+            Session.data.studentInformation.append(contentsOf: newStudentInfo)
+            
+            NSLog("Refresh successful")
+            DispatchQueue.main.async() {
+                completionHandler(Results.success)
+            }
+        }
+        task.resume()
     }
     
     
