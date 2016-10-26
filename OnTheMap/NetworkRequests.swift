@@ -173,7 +173,7 @@ class NetworkRequests {
         }
         
         do {
-            let dict: Dictionary<String, Any> = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
+            let dict: Dictionary<String, Any?> = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any?>
             return dict
         } catch {
             return nil

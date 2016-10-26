@@ -54,7 +54,28 @@ class HubViewController: UITabBarController {
     }
     
     func refresh() {
+        // Setup the UI
+        setNetworkActivityStatus(active: true)
         
+        // Make the call
+        networkRequests.refreshStudentInformation() { (logOutResult) in
+            // Handle the login outcome
+            switch logOutResult {
+            case NetworkRequests.Results.success:
+                NSLog("Refresh succeeded")
+            case NetworkRequests.Results.failedForNetworkingError:
+                NSLog("Refresh failed for networking error")
+                self.showFailureAlert(
+                    title: NSLocalizedString("RefreshFailureTitle", comment: "Refresh failure alert title"),
+                    message: NSLocalizedString("NetworkFailure", comment: "Network failure text"))
+            default:
+                break
+            }
+            
+            // Clean up the UI
+            self.setNetworkActivityStatus(active: false)
+        }
+
     }
     
     func showFailureAlert(title: String, message: String) {

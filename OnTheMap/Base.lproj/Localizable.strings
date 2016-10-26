@@ -16,3 +16,6 @@
 
 // Logout Strings
 "LogoutFailureTitle" = "Logout Failed";
+
+// Refresh Strings
+"RefreshFailureTitle" = "Couldn't Get Student Information";
