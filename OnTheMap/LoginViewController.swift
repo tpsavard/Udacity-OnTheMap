@@ -85,13 +85,11 @@ class LoginViewController: UIViewController {
             // Handle the login outcome
             switch logInResult {
             case NetworkRequests.Results.success:
-                NSLog("Log in succeeded")
                 self.performSegue(withIdentifier: "LoggedIn", sender: nil)
                 self.passwordField.text = ""
             case NetworkRequests.Results.failedForCredentials:
                 self.showLogInFailureAlert(message: NSLocalizedString("LoginCredentialFailure", comment: "Credentials failure text"))
             case NetworkRequests.Results.failedForNetworkingError:
-                NSLog("Log in failed for networking error")
                 self.showLogInFailureAlert(message: NSLocalizedString("NetworkFailure", comment: "Network failure text"))
             }
             

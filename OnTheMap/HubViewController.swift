@@ -13,6 +13,14 @@ class HubViewController: UITabBarController {
     let networkRequests: NetworkRequests = Session.networkRequests
     
 
+    // MARK:- View Controller Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        refresh()
+    }
+    
+    
     // MARK:- UI Methods
     
     @IBAction func logOut(sender: UIBarButtonItem) {
@@ -37,10 +45,8 @@ class HubViewController: UITabBarController {
             // Handle the login outcome
             switch logOutResult {
             case NetworkRequests.Results.success:
-                NSLog("Log out succeeded")
                 self.dismiss(animated: true, completion: nil)
             case NetworkRequests.Results.failedForNetworkingError:
-                NSLog("Log out failed for networking error")
                 self.showFailureAlert(
                     title: NSLocalizedString("LogoutFailureTitle", comment: "Logout failure alert title"),
                     message: NSLocalizedString("NetworkFailure", comment: "Network failure text"))
@@ -62,9 +68,8 @@ class HubViewController: UITabBarController {
             // Handle the login outcome
             switch logOutResult {
             case NetworkRequests.Results.success:
-                NSLog("Refresh succeeded")
+                break;
             case NetworkRequests.Results.failedForNetworkingError:
-                NSLog("Refresh failed for networking error")
                 self.showFailureAlert(
                     title: NSLocalizedString("RefreshFailureTitle", comment: "Refresh failure alert title"),
                     message: NSLocalizedString("NetworkFailure", comment: "Network failure text"))

@@ -41,7 +41,7 @@ class NetworkRequests {
         
             // Try to parse whatever we received; if we fail, assume that the data was currupted as received
             let subData: Data? = data?.subdata(in: 5..<data!.count)
-            guard let response: [String : Any] = self.fromJSONToDict(data: subData) as? [String : Any] else {
+            guard let parsedData: [String : Any] = self.fromJSONToDict(data: subData) as? [String : Any] else {
                 NSLog("Error serializing log in response")
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForNetworkingError)
@@ -50,7 +50,7 @@ class NetworkRequests {
             }
             
             // Check the intelligble structure
-            if let status: Int = response["status"] as? Int, status == 403 {
+            if let status: Int = parsedData["status"] as? Int, status == 403 {
                 NSLog("Log in failed for invalid credentials")
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForCredentials)
@@ -129,7 +129,7 @@ class NetworkRequests {
             }
             
             // Try to parse whatever we received; if we fail, assume that the data was currupted as received
-            guard let response: [String : Any] = self.fromJSONToDict(data: data) as? [String : Any] else {
+            guard let parsedData: [String : Any] = self.fromJSONToDict(data: data) as? [String : Any] else {
                 NSLog("Error serializing refresh response")
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForNetworkingError)
@@ -137,7 +137,7 @@ class NetworkRequests {
                 return
             }
             
-            guard let results = response["results"] as? [[String : Any]] else {
+            guard let results = parsedData["results"] as? [[String : Any]] else {
                 NSLog("No results in the response")
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForNetworkingError)
@@ -155,7 +155,7 @@ class NetworkRequests {
             Session.data.studentInformation.removeAll()
             Session.data.studentInformation.append(contentsOf: newStudentInfo)
             
-            NSLog("Refresh successful")
+            NSLog("Refresh successful, \(Session.data.studentInformation.count) entries added")
             DispatchQueue.main.async() {
                 completionHandler(Results.success)
             }
