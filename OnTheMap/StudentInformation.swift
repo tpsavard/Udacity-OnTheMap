@@ -23,7 +23,7 @@ struct StudentInformation {
     var url: URL?
     
     
-    init(data: Dictionary<String, Any?>) {
+    init(data: [String : Any]) {
         // The input should be a Udacity StudentLocation (multiple) GET API response; not all response (or structure) fields are saved, only those necessary for listing.
         if let firstName = data["firstName"] as? String {
             self.firstName = firstName
@@ -63,9 +63,9 @@ struct StudentInformation {
         }
     }
     
-    func asDictionary() -> Dictionary<String, Any?> {
+    func asDictionary() -> [String : Any] {
         // Return a dictionary ready to be converted to JSON and passed to the Udacity StudentLocation APIs
-        var dict: Dictionary<String, Any?> = [
+        var dict: [String : Any] = [
             "firstName": firstName,
             "lastName": lastName,
             "location": location,

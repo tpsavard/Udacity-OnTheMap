@@ -41,7 +41,7 @@ class NetworkRequests {
         
             // Try to parse whatever we received; if we fail, assume that the data was currupted as received
             let subData: Data? = data?.subdata(in: 5..<data!.count)
-            guard let response = self.fromJSONToDict(data: subData) else {
+            guard let response: [String : Any] = self.fromJSONToDict(data: subData) as? [String : Any] else {
                 NSLog("Error serializing log in response")
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForNetworkingError)
@@ -129,8 +129,7 @@ class NetworkRequests {
             }
             
             // Try to parse whatever we received; if we fail, assume that the data was currupted as received
-            let subData: Data? = data?.subdata(in: 5..<data!.count)
-            guard let response = self.fromJSONToDict(data: subData) else {
+            guard let response: [String : Any] = self.fromJSONToDict(data: data) as? [String : Any] else {
                 NSLog("Error serializing refresh response")
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForNetworkingError)
@@ -138,7 +137,7 @@ class NetworkRequests {
                 return
             }
             
-            guard let results = response["results"] as? [Dictionary<String, Any?>] else {
+            guard let results = response["results"] as? [[String : Any]] else {
                 NSLog("No results in the response")
                 DispatchQueue.main.async() {
                     completionHandler(Results.failedForNetworkingError)
@@ -148,7 +147,7 @@ class NetworkRequests {
             
             // Check for actual post fields; save those that we get
             var newStudentInfo: [StudentInformation] = []
-            for result: Dictionary<String, Any?> in results {
+            for result: [String : Any] in results {
                 let newStudentInfoEntry: StudentInformation = StudentInformation(data: result)
                 newStudentInfo.append(newStudentInfoEntry)
             }
@@ -167,13 +166,13 @@ class NetworkRequests {
     
     // MARK:- Other Methods
     
-    func fromJSONToDict(data: Data?) -> Dictionary<String, Any?>? {
+    func fromJSONToDict(data: Data?) -> Any? {
         guard let data = data else {
             return nil
         }
         
         do {
-            let dict: Dictionary<String, Any?> = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any?>
+            let dict = try JSONSerialization.jsonObject(with: data)
             return dict
         } catch {
             return nil
