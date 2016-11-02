@@ -175,7 +175,7 @@
         <!--Map-->
         <scene sceneID="2yd-ah-A8a">
             <objects>
-                <viewController id="zGN-B9-M98" sceneMemberID="viewController">
+                <viewController id="zGN-B9-M98" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qFy-VD-hEJ"/>
                         <viewControllerLayoutGuide type="bottom" id="6ea-fJ-CJf"/>
@@ -183,7 +183,21 @@
                     <view key="view" contentMode="scaleToFill" id="pDK-9e-ga2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dNa-G4-F0r">
+                                <rect key="frame" x="-4" y="64" width="383" height="554"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zGN-B9-M98" id="tWa-AC-S15"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="dNa-G4-F0r" secondAttribute="trailing" constant="-20" id="1Yh-vY-Pbb"/>
+                            <constraint firstItem="6ea-fJ-CJf" firstAttribute="top" secondItem="dNa-G4-F0r" secondAttribute="bottom" id="4DU-iy-6hR"/>
+                            <constraint firstItem="dNa-G4-F0r" firstAttribute="top" secondItem="qFy-VD-hEJ" secondAttribute="bottom" id="QXw-wX-zuq"/>
+                            <constraint firstItem="dNa-G4-F0r" firstAttribute="leading" secondItem="pDK-9e-ga2" secondAttribute="leadingMargin" constant="-20" id="byM-qp-StV"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="TvB-wU-N5R"/>
                 </viewController>

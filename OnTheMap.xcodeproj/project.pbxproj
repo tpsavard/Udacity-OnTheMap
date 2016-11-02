@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		016654041DCA72850042C43A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016654031DCA72850042C43A /* MapViewController.swift */; };
 		0172BF251DA0272600411DB3 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172BF241DA0272600411DB3 /* NetworkRequests.swift */; };
 		01EA09F71DB01519002CC2FF /* HubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EA09F61DB01519002CC2FF /* HubViewController.swift */; };
 		221ED2B11DA4ABBC009BA0CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 221ED2B31DA4ABBC009BA0CC /* Localizable.strings */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		016654031DCA72850042C43A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0172BF241DA0272600411DB3 /* NetworkRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
 		01EA09F61DB01519002CC2FF /* HubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HubViewController.swift; sourceTree = "<group>"; };
 		221ED2B61DA4B181009BA0CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				227A105F1D94DBB900558348 /* LoginViewController.swift */,
 				01EA09F61DB01519002CC2FF /* HubViewController.swift */,
 				224807CC1DC99425002AFD9B /* TableViewController.swift */,
+				016654031DCA72850042C43A /* MapViewController.swift */,
 				224807CE1DC9A741002AFD9B /* RefreshableProtocol.swift */,
 			);
 			name = Controllers;
@@ -309,6 +312,7 @@
 				224807CF1DC9A741002AFD9B /* RefreshableProtocol.swift in Sources */,
 				224807CD1DC99425002AFD9B /* TableViewController.swift in Sources */,
 				227A105E1D94DBB900558348 /* AppDelegate.swift in Sources */,
+				016654041DCA72850042C43A /* MapViewController.swift in Sources */,
 				2251B13D1DAC8FEA009B9C9F /* Session.swift in Sources */,
 				2251B13F1DAC9094009B9C9F /* StudentInformation.swift in Sources */,
 				01EA09F71DB01519002CC2FF /* HubViewController.swift in Sources */,
