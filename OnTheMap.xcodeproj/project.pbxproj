@@ -10,6 +10,7 @@
 		0172BF251DA0272600411DB3 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172BF241DA0272600411DB3 /* NetworkRequests.swift */; };
 		01EA09F71DB01519002CC2FF /* HubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EA09F61DB01519002CC2FF /* HubViewController.swift */; };
 		221ED2B11DA4ABBC009BA0CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 221ED2B31DA4ABBC009BA0CC /* Localizable.strings */; };
+		224807CD1DC99425002AFD9B /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224807CC1DC99425002AFD9B /* StudentTableViewController.swift */; };
 		2251B13D1DAC8FEA009B9C9F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251B13C1DAC8FEA009B9C9F /* Session.swift */; };
 		2251B13F1DAC9094009B9C9F /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251B13E1DAC9094009B9C9F /* StudentInformation.swift */; };
 		227A105E1D94DBB900558348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A105D1D94DBB900558348 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		0172BF241DA0272600411DB3 /* NetworkRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
 		01EA09F61DB01519002CC2FF /* HubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HubViewController.swift; sourceTree = "<group>"; };
 		221ED2B61DA4B181009BA0CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		224807CC1DC99425002AFD9B /* StudentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
 		2251B13C1DAC8FEA009B9C9F /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		2251B13E1DAC9094009B9C9F /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		227A105A1D94DBB900558348 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 			children = (
 				227A105F1D94DBB900558348 /* LoginViewController.swift */,
 				01EA09F61DB01519002CC2FF /* HubViewController.swift */,
+				224807CC1DC99425002AFD9B /* StudentTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -227,7 +230,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Timothy Savard";
 				TargetAttributes = {
 					227A10591D94DBB900558348 = {
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				227A10601D94DBB900558348 /* LoginViewController.swift in Sources */,
+				224807CD1DC99425002AFD9B /* StudentTableViewController.swift in Sources */,
 				227A105E1D94DBB900558348 /* AppDelegate.swift in Sources */,
 				2251B13D1DAC8FEA009B9C9F /* Session.swift in Sources */,
 				2251B13F1DAC9094009B9C9F /* StudentInformation.swift in Sources */,
@@ -385,6 +389,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -435,6 +440,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -469,6 +475,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tpsavard.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -481,6 +488,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tpsavard.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
