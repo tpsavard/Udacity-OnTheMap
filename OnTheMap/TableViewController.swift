@@ -1,5 +1,5 @@
 //
-//  StudentTableViewController.swift
+//  TableViewController.swift
 //  OnTheMap
 //
 //  Created by Timothy Savard on 11/1/16.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class StudentTableViewController: UITableViewController {
+class TableViewController: UITableViewController, Refreshable {
     
     // MARK:- Table View Controller Methods
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        refresh()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +34,13 @@ class StudentTableViewController: UITableViewController {
         cell.detailTextLabel?.text = ""
         
         return cell
+    }
+    
+    
+    // MARK:- 
+    
+    func refresh() {
+        self.tableView.reloadData()
     }
     
 }

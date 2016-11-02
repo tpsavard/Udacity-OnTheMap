@@ -31,6 +31,11 @@ class HubViewController: UITabBarController {
     @IBAction func refresh(sender: UIBarButtonItem) {
         print("refresh IBAction called")
         refresh()
+        
+        // Update the appropriate view
+        if let selectedViewController: Refreshable = selectedViewController as? Refreshable {
+            selectedViewController.refresh()
+        }
     }
     
     
