@@ -9,8 +9,12 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, Refreshable {
 
+    // MARK:- Other Methods
+
+    func refresh() {
+        // TODO: Refresh map view
+    }
     
-
 }

@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     
     let networkRequests: NetworkRequests = Session.networkRequests
     
-    
     // MARK:- View Controller Properties & Methods
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -29,7 +28,6 @@ class LoginViewController: UIViewController {
         // Fix up the UI
         enableLogin()
     }
-    
     
     // MARK:- UI Methods
     
@@ -65,7 +63,6 @@ class LoginViewController: UIViewController {
         print("SignUp IBAction called")
         signUp()
     }
-    
     
     // MARK:- Other Methods
     

@@ -36,8 +36,7 @@ class TableViewController: UITableViewController, Refreshable {
         return cell
     }
     
-    
-    // MARK:- 
+    // MARK:- Other Methods
     
     func refresh() {
         self.tableView.reloadData()

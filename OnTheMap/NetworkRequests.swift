@@ -16,7 +16,6 @@ class NetworkRequests {
         case failedForCredentials
     }
     
-    
     // MARK:- Action Methods
     
     func logIn(username: String, password: String, completionHandler: @escaping (Results) -> ()) {
@@ -162,7 +161,6 @@ class NetworkRequests {
         }
         task.resume()
     }
-    
     
     // MARK:- Other Methods
     

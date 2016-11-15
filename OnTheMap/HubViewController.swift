@@ -12,14 +12,12 @@ class HubViewController: UITabBarController {
 
     let networkRequests: NetworkRequests = Session.networkRequests
     
-
     // MARK:- View Controller Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
     }
-    
     
     // MARK:- UI Methods
     
@@ -37,7 +35,6 @@ class HubViewController: UITabBarController {
             selectedViewController.refresh()
         }
     }
-    
     
     // MARK:- Other Methods
     
