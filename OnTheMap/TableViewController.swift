@@ -12,11 +12,6 @@ class TableViewController: UITableViewController, Refreshable {
     
     // MARK:- Table View Controller Methods
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        refresh()
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Session.data.studentInformation.count
     }

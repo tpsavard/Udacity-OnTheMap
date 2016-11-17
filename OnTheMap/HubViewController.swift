@@ -14,8 +14,8 @@ class HubViewController: UITabBarController {
     
     // MARK:- View Controller Methods
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         refresh()
     }
     
@@ -29,11 +29,6 @@ class HubViewController: UITabBarController {
     @IBAction func refresh(sender: UIBarButtonItem) {
         print("refresh IBAction called")
         refresh()
-        
-        // Update the appropriate view
-        if let selectedViewController: Refreshable = selectedViewController as? Refreshable {
-            selectedViewController.refresh()
-        }
     }
     
     // MARK:- Other Methods
@@ -70,7 +65,9 @@ class HubViewController: UITabBarController {
             // Handle the login outcome
             switch logOutResult {
             case NetworkRequests.Results.success:
-                break;
+                if let selectedViewController: Refreshable = self.selectedViewController as? Refreshable {
+                    selectedViewController.refresh()
+                }
             case NetworkRequests.Results.failedForNetworkingError:
                 self.showFailureAlert(
                     title: NSLocalizedString("RefreshFailureTitle", comment: "Refresh failure alert title"),
@@ -81,6 +78,7 @@ class HubViewController: UITabBarController {
             
             // Clean up the UI
             self.setNetworkActivityStatus(active: false)
+            
         }
 
     }
