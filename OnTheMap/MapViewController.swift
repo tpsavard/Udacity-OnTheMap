@@ -30,6 +30,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, Refreshable {
         
         return annotationView
     }
+    
+//    // When user taps on the disclosure button you can perform a segue to navigate to another view controller
+//    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+//        if control == view.rightCalloutAccessoryView{
+//            println(view.annotation.title) // annotation's title
+//            println(view.annotation.subtitle) // annotation's subttitle
+//            
+//            //Perform a segue here to navigate to another viewcontroller
+//            // On tapping the disclosure button you will get here
+//        }
+//    }
 
     // MARK:- Other Methods
 
