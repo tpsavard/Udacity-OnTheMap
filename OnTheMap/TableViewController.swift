@@ -31,6 +31,18 @@ class TableViewController: UITableViewController, Refreshable {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let studentInfo = Session.data.studentInformation[indexPath.row]
+        
+        // Jump to Safari and open the sign up link
+        if let signUpURL = studentInfo.url {
+            UIApplication.shared.open(signUpURL, options: [:], completionHandler: nil)
+        }
+        
+        // Clean up
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
     // MARK:- Other Methods
     
     func refresh() {

@@ -31,16 +31,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, Refreshable {
         return annotationView
     }
     
-//    // When user taps on the disclosure button you can perform a segue to navigate to another view controller
-//    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-//        if control == view.rightCalloutAccessoryView{
-//            println(view.annotation.title) // annotation's title
-//            println(view.annotation.subtitle) // annotation's subttitle
-//            
-//            //Perform a segue here to navigate to another viewcontroller
-//            // On tapping the disclosure button you will get here
-//        }
-//    }
+    // When user taps on the disclosure button you can perform a segue to navigate to another view controller
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            guard let annotation = view.annotation, let detailString = annotation.subtitle! else {
+                NSLog("Error getting student information from map annotation view")
+                return
+            }
+            
+            // Jump to Safari and open the sign up link
+            if let signUpURL = URL(string: detailString) {
+                UIApplication.shared.open(signUpURL, options: [:], completionHandler: nil)
+            }
+        }
+    }
 
     // MARK:- Other Methods
 
