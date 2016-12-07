@@ -172,6 +172,69 @@
             </objects>
             <point key="canvasLocation" x="2769" y="494"/>
         </scene>
+        <!--Post View Controller-->
+        <scene sceneID="6dC-kA-6mS">
+            <objects>
+                <viewController id="Bvc-Zu-QdL" customClass="PostViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mne-uB-hKA"/>
+                        <viewControllerLayoutGuide type="bottom" id="7vL-O3-d6L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ixq-dH-xTo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vgm-bq-0zz">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="6ed-JH-D5a"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vHo-Pa-Qrc"/>
+                                    <barButtonItem enabled="NO" systemItem="done" id="YNw-cF-Ku9"/>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="85t-KT-B0I">
+                                <rect key="frame" x="-4" y="20" width="383" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fieldCell" id="LQj-DM-Lpi">
+                                        <rect key="frame" x="0.0" y="28" width="383" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LQj-DM-Lpi" id="5zP-1e-DEb">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mapCell" id="aag-C3-BKx">
+                                        <rect key="frame" x="0.0" y="72" width="383" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aag-C3-BKx" id="gN0-DK-iza">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Bvc-Zu-QdL" id="9c1-Eg-YYd"/>
+                                    <outlet property="delegate" destination="Bvc-Zu-QdL" id="LTN-Xw-D5s"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vgm-bq-0zz" firstAttribute="leading" secondItem="ixq-dH-xTo" secondAttribute="leading" id="0lN-AO-BIn"/>
+                            <constraint firstItem="85t-KT-B0I" firstAttribute="leading" secondItem="ixq-dH-xTo" secondAttribute="leadingMargin" constant="-20" id="2u6-OF-f46"/>
+                            <constraint firstItem="Vgm-bq-0zz" firstAttribute="top" secondItem="85t-KT-B0I" secondAttribute="bottom" id="8oa-NL-zi6"/>
+                            <constraint firstItem="85t-KT-B0I" firstAttribute="top" secondItem="Mne-uB-hKA" secondAttribute="bottom" id="H1o-xE-4Qm"/>
+                            <constraint firstItem="7vL-O3-d6L" firstAttribute="top" secondItem="Vgm-bq-0zz" secondAttribute="bottom" id="e4e-x6-xWn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="85t-KT-B0I" secondAttribute="trailing" constant="-20" id="mhv-wf-7qh"/>
+                            <constraint firstAttribute="trailing" secondItem="Vgm-bq-0zz" secondAttribute="trailing" id="yz4-y2-iIc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ia-CI-cIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2769" y="-835"/>
+        </scene>
         <!--Map-->
         <scene sceneID="2yd-ah-A8a">
             <objects>
@@ -224,7 +287,11 @@
                                     <action selector="refreshWithSender:" destination="A8k-xg-RfU" id="0xB-8O-ZEu"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="Pin" id="SG5-FE-4RU"/>
+                            <barButtonItem image="Pin" id="SG5-FE-4RU">
+                                <connections>
+                                    <segue destination="Bvc-Zu-QdL" kind="presentation" id="zGB-y7-2Am"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="0Ns-xW-9PJ">

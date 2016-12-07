@@ -22,6 +22,7 @@
 		227A10681D94DBBA00558348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227A10661D94DBBA00558348 /* LaunchScreen.storyboard */; };
 		227A10731D94DBBA00558348 /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A10721D94DBBA00558348 /* OnTheMapTests.swift */; };
 		227A107E1D94DBBA00558348 /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A107D1D94DBBA00558348 /* OnTheMapUITests.swift */; };
+		22CE6BF71DF7CE420021EF57 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE6BF61DF7CE420021EF57 /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		227A10791D94DBBA00558348 /* OnTheMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnTheMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		227A107D1D94DBBA00558348 /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		227A107F1D94DBBA00558348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22CE6BF61DF7CE420021EF57 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				224807CC1DC99425002AFD9B /* TableViewController.swift */,
 				016654031DCA72850042C43A /* MapViewController.swift */,
 				224807CE1DC9A741002AFD9B /* RefreshableProtocol.swift */,
+				22CE6BF61DF7CE420021EF57 /* PostViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				224807CF1DC9A741002AFD9B /* RefreshableProtocol.swift in Sources */,
 				224807CD1DC99425002AFD9B /* TableViewController.swift in Sources */,
 				227A105E1D94DBB900558348 /* AppDelegate.swift in Sources */,
+				22CE6BF71DF7CE420021EF57 /* PostViewController.swift in Sources */,
 				016654041DCA72850042C43A /* MapViewController.swift in Sources */,
 				2251B13D1DAC8FEA009B9C9F /* Session.swift in Sources */,
 				2251B13F1DAC9094009B9C9F /* StudentInformation.swift in Sources */,
