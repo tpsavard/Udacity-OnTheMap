@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -188,14 +188,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SMA-2u-wgO">
+                                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SMA-2u-wgO">
                                             <rect key="frame" x="8" y="6" width="359" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="czC-E5-hoY"/>
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                            <connections>
+                                                <action selector="textFieldDoneWithSender:" destination="af5-WY-iDA" eventType="primaryActionTriggered" id="EVD-K4-RKB"/>
+                                                <action selector="textFieldUpdatedWithSender:" destination="af5-WY-iDA" eventType="editingChanged" id="kx6-8h-wFK"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -214,6 +218,9 @@
                                     <subviews>
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Nh7-Ai-xsg">
                                             <rect key="frame" x="8" y="8" width="359" height="268.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="268" id="JKK-2t-rUo"/>
+                                            </constraints>
                                         </mapView>
                                     </subviews>
                                     <constraints>
@@ -231,14 +238,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZs-H6-yxh">
+                                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZs-H6-yxh">
                                             <rect key="frame" x="8" y="6" width="359" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="y9R-iL-DWC"/>
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="done"/>
+                                            <connections>
+                                                <action selector="textFieldDoneWithSender:" destination="af5-WY-iDA" eventType="primaryActionTriggered" id="NQq-Rg-6Tu"/>
+                                                <action selector="textFieldUpdatedWithSender:" destination="af5-WY-iDA" eventType="editingChanged" id="dg3-u4-nth"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -256,7 +267,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAR-tT-b2q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="2" y="2" width="371" height="39.5"/>
                                             <state key="normal" title="Done"/>
                                             <state key="disabled">
                                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -264,10 +275,10 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="eAR-tT-b2q" firstAttribute="top" secondItem="ZTw-dw-c7I" secondAttribute="top" id="Ace-tt-8mv"/>
-                                        <constraint firstAttribute="bottom" secondItem="eAR-tT-b2q" secondAttribute="bottom" id="N9l-t1-KNk"/>
-                                        <constraint firstItem="eAR-tT-b2q" firstAttribute="leading" secondItem="ZTw-dw-c7I" secondAttribute="leading" id="Nio-ty-VnM"/>
-                                        <constraint firstAttribute="trailing" secondItem="eAR-tT-b2q" secondAttribute="trailing" id="eRa-WV-ZL0"/>
+                                        <constraint firstItem="eAR-tT-b2q" firstAttribute="leading" secondItem="ZTw-dw-c7I" secondAttribute="leading" constant="2" id="9wE-Ty-r44"/>
+                                        <constraint firstItem="eAR-tT-b2q" firstAttribute="top" secondItem="ZTw-dw-c7I" secondAttribute="top" constant="2" id="DkD-Sa-PJr"/>
+                                        <constraint firstAttribute="bottom" secondItem="eAR-tT-b2q" secondAttribute="bottom" constant="2" id="M5I-je-Vmj"/>
+                                        <constraint firstAttribute="trailing" secondItem="eAR-tT-b2q" secondAttribute="trailing" constant="2" id="tFN-za-bsG"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -279,21 +290,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFN-t5-xFj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFN-t5-xFj">
+                                            <rect key="frame" x="2" y="2" width="371" height="39.5"/>
                                             <state key="normal" title="Cancel">
                                                 <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="disabled">
-                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
+                                            <connections>
+                                                <action selector="cancelWithSender:" destination="af5-WY-iDA" eventType="primaryActionTriggered" id="krl-MX-h08"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="tFN-t5-xFj" firstAttribute="top" secondItem="9A8-Zo-pif" secondAttribute="top" id="GpS-kR-F2M"/>
-                                        <constraint firstAttribute="bottom" secondItem="tFN-t5-xFj" secondAttribute="bottom" id="bPa-Uo-7Ja"/>
-                                        <constraint firstItem="tFN-t5-xFj" firstAttribute="leading" secondItem="9A8-Zo-pif" secondAttribute="leading" id="dzD-wM-hGe"/>
-                                        <constraint firstAttribute="trailing" secondItem="tFN-t5-xFj" secondAttribute="trailing" id="kvh-jH-rSP"/>
+                                        <constraint firstAttribute="bottom" secondItem="tFN-t5-xFj" secondAttribute="bottom" constant="2" id="6Zm-Ib-dY2"/>
+                                        <constraint firstItem="tFN-t5-xFj" firstAttribute="leading" secondItem="9A8-Zo-pif" secondAttribute="leading" constant="2" id="MnU-Fm-Paj"/>
+                                        <constraint firstAttribute="trailing" secondItem="tFN-t5-xFj" secondAttribute="trailing" constant="2" id="QMV-LA-2cz"/>
+                                        <constraint firstItem="tFN-t5-xFj" firstAttribute="top" secondItem="9A8-Zo-pif" secondAttribute="top" constant="2" id="ywV-Jr-fY3"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
