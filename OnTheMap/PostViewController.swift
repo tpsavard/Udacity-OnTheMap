@@ -10,11 +10,11 @@ import UIKit
 
 class PostViewController: UITableViewController {
     
-    @IBOutlet weak var urlField: UITextField!
-    @IBOutlet weak var doneButton: UIButton!
+    weak var urlField: UITextField!
+    weak var doneButton: UIButton!
     
     var locationFound: Bool = false
-    var locationCellCount: Int = 1
+    var locationShown: Bool = false
 
     // MARK:- Table View Controller Methods
 
@@ -27,7 +27,7 @@ class PostViewController: UITableViewController {
         switch section {
         case 0:
             // Map cell count changes depending on text field content
-            return locationCellCount
+            return (locationShown ? 2 : 1)
         case 1:
             // One cell to URL
             return 1
@@ -62,12 +62,14 @@ class PostViewController: UITableViewController {
         
         // TODO: Decorate & return the cell
         switch cellIdentifier {
-        case "map":
-            break
         case "url":
-            break
+            if let urlView = cell.contentView.viewWithTag(2) as? UITextField {
+                urlField = urlView
+            }
         case "done":
-            break
+            if let doneView = cell.contentView.viewWithTag(3) as? UIButton {
+                doneButton = doneView
+            }
         default:
             break
         }
@@ -105,10 +107,10 @@ class PostViewController: UITableViewController {
             // Add an annotation for the resolved location
             
             // Show the map cell
-            if locationCellCount >= 1 {
+            if !locationShown {
                 tableView.beginUpdates()
                 
-                locationCellCount = 2
+                locationShown = true
                 tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
                 
                 tableView.endUpdates()
@@ -119,8 +121,7 @@ class PostViewController: UITableViewController {
     // MARK:- Other Methods
     
     func enableDone() {
-        //doneButton.isEnabled = !(urlField.text!.isEmpty) && locationFound
-        return
+        doneButton.isEnabled = !(urlField.text!.isEmpty) && locationFound
     }
 
 }
