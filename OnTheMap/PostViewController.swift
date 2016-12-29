@@ -75,6 +75,15 @@ class PostViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // Specify a custom height for the Map cell
+        if indexPath.section == 0 && indexPath.row == 1 {
+            return 268.0
+        } else {
+            return UITableViewAutomaticDimension
+        }
+    }
+    
     // MARK:- UI Methods
     
     @IBAction func cancel(sender: UIButton) {
@@ -96,12 +105,14 @@ class PostViewController: UITableViewController {
             // Add an annotation for the resolved location
             
             // Show the map cell
-            tableView.beginUpdates()
-            
-            locationCellCount = 2
-            tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
-            
-            tableView.endUpdates()
+            if locationCellCount >= 1 {
+                tableView.beginUpdates()
+                
+                locationCellCount = 2
+                tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
+                
+                tableView.endUpdates()
+            }
         }
     }
     
