@@ -123,6 +123,14 @@ class PostViewController: UITableViewController {
                 return
             }
             
+            // Show the map cell, if hasn't been shown already
+            if !locationShown {
+                locationShown = true
+                tableView.beginUpdates()
+                tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
+                tableView.endUpdates()
+            }
+            
             // Look up the given location name
             geocoder.geocodeAddressString(locationField.text!) {(placemarks: [CLPlacemark]?, error: Error?) in
                 // More validation, before we change pins
@@ -131,14 +139,6 @@ class PostViewController: UITableViewController {
                         title: NSLocalizedString("LocationNotFoundFailureTitle", comment: "Location not found failure alert title"),
                         message: NSLocalizedString("LocationNotFoundFailure", comment: "Location not found failure text"))
                     return
-                }
-                
-                // Show the map cell, if hasn't been shown already
-                if !self.locationShown {
-                    self.locationShown = true
-                    self.tableView.beginUpdates()
-                    self.tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
-                    self.tableView.endUpdates()
                 }
                 
                 // Remove any prior annotations
