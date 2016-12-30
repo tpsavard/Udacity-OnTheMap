@@ -129,8 +129,14 @@ class PostViewController: UITableViewController {
                 tableView.endUpdates()
             }
             
+            // Setup the UI
+            setNetworkActivityStatus(active: true)
+            
             // Look up the given location name
             geocoder.geocodeAddressString(locationField.text!) {(placemarks: [CLPlacemark]?, error: Error?) in
+                // Clean up the UI
+                self.setNetworkActivityStatus(active: false)
+                
                 // More validation, before we change pins
                 guard let placemarks = placemarks, placemarks.count > 0, error == nil else {
                     self.showFailureAlert(
