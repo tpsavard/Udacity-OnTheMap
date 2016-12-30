@@ -10,8 +10,6 @@ import UIKit
 
 class HubViewController: UITabBarController {
 
-    let networkRequests: NetworkRequests = Session.networkRequests
-    
     // MARK:- View Controller Methods
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +36,7 @@ class HubViewController: UITabBarController {
         setNetworkActivityStatus(active: true)
         
         // Make the call
-        networkRequests.logOut() { (logOutResult) in
+        Session.networkRequests.logOut() { (logOutResult) in
             // Handle the login outcome
             switch logOutResult {
             case NetworkRequests.Results.success:
@@ -61,7 +59,7 @@ class HubViewController: UITabBarController {
         setNetworkActivityStatus(active: true)
         
         // Make the call
-        networkRequests.refreshStudentInformation() { (logOutResult) in
+        Session.networkRequests.refreshStudentInformation() { (logOutResult) in
             // Handle the login outcome
             switch logOutResult {
             case NetworkRequests.Results.success:

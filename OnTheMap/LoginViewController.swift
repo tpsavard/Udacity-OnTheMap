@@ -14,8 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    let networkRequests: NetworkRequests = Session.networkRequests
-    
     // MARK:- View Controller Properties & Methods
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -78,7 +76,7 @@ class LoginViewController: UIViewController {
         setNetworkActivityStatus(active: true)
         
         // Make the call
-        networkRequests.logIn(username: username, password: password) { (logInResult) in
+        Session.networkRequests.logIn(username: username, password: password) { (logInResult) in
             // Handle the login outcome
             switch logInResult {
             case NetworkRequests.Results.success:
