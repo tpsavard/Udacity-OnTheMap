@@ -11,6 +11,9 @@ import Foundation
 class Session {
     
     class Data {
+        var userID: String = ""
+        var userFirstName: String = ""
+        var userLastName: String = ""
         var studentInformation: [StudentInformation] = []
     }
     

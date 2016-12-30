@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func textFieldDone(sender: UITextField) {
-        print("textFieldDone called")
+        print("textFieldDone IBAction called")
         
         // Check which text field sent this: login (1) or password (2)
         switch sender.tag {

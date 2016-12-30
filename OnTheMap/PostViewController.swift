@@ -18,7 +18,7 @@ class PostViewController: UITableViewController {
     weak var doneButton: UIButton!
     
     let geocoder: CLGeocoder = CLGeocoder()
-    var locationFound: Bool = false
+    var locationCoordinates: CLLocationCoordinate2D? = nil
     var locationShown: Bool = false
 
     // MARK:- Table View Controller Methods
@@ -101,15 +101,13 @@ class PostViewController: UITableViewController {
     
     // MARK:- UI Methods
     
-    @IBAction func cancel(sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func textFieldUpdated(sender: AnyObject) {
         enableDone()
     }
     
     @IBAction func textFieldDone(sender: UITextField) {
+        print("textFieldDone IBAction called")
+        
         // For either text field, drop the keyboard and end editing
         sender.resignFirstResponder()
         
@@ -151,20 +149,81 @@ class PostViewController: UITableViewController {
                 self.map.addAnnotation(annotation)
                 self.map.setCenter(annotation.coordinate, animated: true)
                 
-                self.locationFound = true
+                self.locationCoordinates = annotation.coordinate
                 self.enableDone()
             }
         }
     }
     
     @IBAction func done(sender: UIButton) {
-        cancel(sender: sender)
+        print("done IBAction called")
+        done()
+    }
+    
+    @IBAction func cancel(sender: UIButton) {
+        print("cancel IBAction called")
+        close()
     }
     
     // MARK:- Other Methods
     
     func enableDone() {
-        doneButton.isEnabled = !(urlField.text!.isEmpty) && locationFound
+        doneButton.isEnabled = !(urlField.text!.isEmpty) && (locationCoordinates != nil)
+    }
+    
+    func done() {
+        let location: String = locationField.text!
+        let url: String = urlField.text!
+        let latitude: Double = locationCoordinates!.latitude
+        let logitude: Double = locationCoordinates!.longitude
+        
+        // Setup the UI
+        setNetworkActivityStatus(active: true)
+        
+        // Make the call to refresh the user info
+        Session.networkRequests.getUserInformation() { (getResult) in
+            // Clean up the UI
+            self.setNetworkActivityStatus(active: false)
+            
+            // Handle the get outcome
+            switch getResult {
+            case NetworkRequests.Results.success:
+                self.post(location: location, url: url, latitude: latitude, logitude: logitude)
+            case NetworkRequests.Results.failedForNetworkingError:
+                self.showFailureAlert(
+                    title: NSLocalizedString("PostFailureTitle", comment: "Posting failure alert title"),
+                    message: NSLocalizedString("NetworkFailure", comment: "Network failure text"))
+            default:
+                break
+            }
+        }
+    }
+    
+    func post(location: String, url: String, latitude: Double, logitude: Double) {
+        // Setup the UI
+        setNetworkActivityStatus(active: true)
+        
+        // Make the call to refresh the user info
+        Session.networkRequests.postStudentInformation(locationName: location, latitude: latitude, logitude: logitude, userURL: url) { (getResult) in
+            // Clean up the UI
+            self.setNetworkActivityStatus(active: false)
+            
+            // Handle the get outcome
+            switch getResult {
+            case NetworkRequests.Results.success:
+                self.close()
+            case NetworkRequests.Results.failedForNetworkingError:
+                self.showFailureAlert(
+                    title: NSLocalizedString("PostFailureTitle", comment: "Posting failure alert title"),
+                    message: NSLocalizedString("NetworkFailure", comment: "Network failure text"))
+            default:
+                break
+            }
+        }
+    }
+    
+    func close() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func showFailureAlert(title: String, message: String) {
@@ -181,6 +240,11 @@ class PostViewController: UITableViewController {
         // Showtime!
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func setNetworkActivityStatus(active: Bool) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = active
+        view.isUserInteractionEnabled = !active
     }
 
 }

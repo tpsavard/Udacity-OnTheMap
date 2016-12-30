@@ -26,3 +26,5 @@
 "LocationNotFoundFailureTitle" = "Location Not Found";
 "LocationNotFoundFailure" = "There was a problem looking up the location you gave.\n\nDouble check what you've entered and try again.";
 
+// Post Strings
+"PostFailureTitle" = "Posting Failed";
