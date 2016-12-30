@@ -19,3 +19,10 @@
 
 // Refresh Strings
 "RefreshFailureTitle" = "Couldn't Get Student Information";
+
+// Location Search Strings
+"NoLocationFailureTitle" = "No Location Given";
+"NoLocationFailure" = "No location was given to find.\n\nPlease enter one before searching.";
+"LocationNotFoundFailureTitle" = "Location Not Found";
+"LocationNotFoundFailure" = "There was a problem looking up the location you gave.\n\nDouble check what you've entered and try again.";
+
